@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Preview</title>
+    <style>
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 560px; /* Match YouTube video ratio */
+            margin: auto;
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            padding: 20px;
+            color: white;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="video-container">
+    <!-- Video Thumbnail -->
+    <img class="video-thumbnail" src="https://img.youtube.com/vi/VIDEO_ID/hqdefault.jpg" alt="YouTube Video" id="videoThumbnail">
+    <!-- Play Button -->
+    <div class="play-button" id="playButton">▶</div>
+</div>
+
+<!-- Embedding YouTube Video -->
+<iframe id="youtubePlayer" width="560" height="315" src="https://www.youtube.com/embed/4ge-ym-JpHU?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display: none;"></iframe>
+
+<script>
+    const thumbnail = document.getElementById("videoThumbnail");
+    const playButton = document.getElementById("playButton");
+    const player = document.getElementById("youtubePlayer");
+
+    // When the thumbnail or play button is clicked, replace it with the YouTube embed
+    function loadVideo() {
+        thumbnail.style.display = "none";
+        playButton.style.display = "none";
+        player.style.display = "block";
+    }
+
+    thumbnail.addEventListener("click", loadVideo);
+    playButton.addEventListener("click", loadVideo);
+</script>
+
+</body>
+</html>
